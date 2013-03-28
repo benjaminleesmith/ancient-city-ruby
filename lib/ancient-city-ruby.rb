@@ -1,5 +1,3 @@
-require "ancient-city-ruby/version"
-
 module Ancient
   module City
     module Ruby
