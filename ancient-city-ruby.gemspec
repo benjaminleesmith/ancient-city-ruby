@@ -13,4 +13,5 @@ Gem::Specification.new do |gem|
   gem.name          = "ancient-city-ruby"
   gem.require_paths = ["lib"]
   gem.version       = "0.0.1"
+  gem.add_runtime_dependency "terminal-table"
 end
