@@ -14,9 +14,11 @@ describe Schedule::Printer do
 
     it "prints out events with speakers" do
       schedule_data = {
-          Date.new => [
-              Schedule::TimeSlot.new("10:00-10:45", "Advanced Ruby: Deconstructing a Mock Object Library", "Andy Lindeman")
-          ]
+          Date.new => {
+              columns: 3, events: [
+                  Schedule::TimeSlot.new("10:00-10:45", "Advanced Ruby: Deconstructing a Mock Object Library", "Andy Lindeman")
+              ]
+          }
       }
 
       printer = Schedule::Printer.new
@@ -24,7 +26,7 @@ describe Schedule::Printer do
       printer.stub(:print_date)
 
       STDOUT.should_receive(:puts).with(
-"+-------------+-----------------------------------------------------+---------------+
+          "+-------------+-----------------------------------------------------+---------------+
 | 10:00-10:45 | Advanced Ruby: Deconstructing a Mock Object Library | Andy Lindeman |
 +-------------+-----------------------------------------------------+---------------+"
       )
@@ -34,9 +36,11 @@ describe Schedule::Printer do
 
     it "prints events that do not have speakers" do
       schedule_data = {
-          Date.new => [
-              Schedule::TimeSlot.new("8:00-9:00", "Breakfast and Socializing")
-          ]
+          Date.new => {
+              columns: 2, events: [
+                  Schedule::TimeSlot.new("8:00-9:00", "Breakfast and Socializing")
+              ]
+          }
       }
 
       printer = Schedule::Printer.new
@@ -44,9 +48,9 @@ describe Schedule::Printer do
       printer.stub(:print_date)
 
       STDOUT.should_receive(:puts).with(
-"+-----------+-------------+
+"+-----------+---------------------------+
 | 8:00-9:00 | Breakfast and Socializing |
-+-----------+-------------+"
++-----------+---------------------------+"
       )
 
       printer.print_schedule(schedule_data)

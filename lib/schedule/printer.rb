@@ -12,13 +12,19 @@ module Schedule
       puts date.strftime("%A, %B %-d, %Y")
     end
 
-    def print_schedule_table(time_slots)
+    def print_schedule_table(table_data)
+      time_slots = table_data[:events]
+      columns = table_data[:columns]
       table = Terminal::Table.new do |t|
         time_slots.each do |time_slot|
-          if time_slot.speaker.nil?
-            t.add_row [format_time(time_slot.time), format_multi_column_data(time_slot.event_name)]
+          if columns == 2
+            t.add_row [format_time(time_slot.time), format_single_column_data(time_slot.event_name)]
           else
-            t.add_row [format_time(time_slot.time), format_single_column_data(time_slot.event_name), format_single_column_data(time_slot.speaker)]
+            if time_slot.speaker.nil?
+              t.add_row [format_time(time_slot.time), format_multi_column_data(time_slot.event_name)]
+            else
+              t.add_row [format_time(time_slot.time), format_single_column_data(time_slot.event_name), format_single_column_data(time_slot.speaker)]
+            end
           end
           t.add_row :separator unless time_slot == time_slots.last
         end

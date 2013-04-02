@@ -2,42 +2,57 @@ require "date"
 require "terminal-table"
 require "schedule/printer"
 require "schedule/time_slot"
+require "ancient-city-ruby/drawing_entry"
 
 class AncientCityRuby
   SCHEDULE_DATA = {
-      Date.new(2013, 4, 3) => [
-          Schedule::TimeSlot.new("7:00-9:00", "Registration and Socializing")
-      ],
-
-  #    Date.new(2012, 10, 8) => [
-  #        Schedule::TimeSlot.new("8:00 - 9:00 AM", ["Registration & Breakfast"]),
-  #        Schedule::TimeSlot.new("9:15 - 9:30 AM", ["Welcome & Introduction"]),
-  #        Schedule::TimeSlot.new("9:30 - 10:15 AM", ["Keynote - Rails 4 and the Future of Web\nAaron Patterson"]),
-  #        Schedule::TimeSlot.new("10:30 - 11:15 AM", ["Git and GitHub Secrets\nZach Holman","My Server for Aiur: How Starcraft Taught Me To Scale\nRichard Schneeman"]),
-  #        Schedule::TimeSlot.new("11:30 - 12:15 PM", ["Evented Ruby vs Node.js\nJerry Cheung", "Rails Development on Windows. Seriously.\nEvan Machnic"]),
-  #        Schedule::TimeSlot.new("12:30 - 1:45 PM", ["Lunch"]),
-  #        Schedule::TimeSlot.new("2:00 - 2:45 PM", ["Refactoring from Good to Great\nBen Orenstein", "Carson: On the Path from Big-Ball-of-Mud to SOA\nJames Rosen"]),
-  #        Schedule::TimeSlot.new("3:00 - 3:45 PM", ["Why JRuby?\nCharles Nutter", "Message In A Bottle\nKonstantin Haase"]),
-  #        Schedule::TimeSlot.new("4:00 - 4:45 PM", ["Yay! Mocks!\nCorey Haines", "Ensuring High Performance For Your Ruby App\nKowsik Guruswamy"]),
-  #        Schedule::TimeSlot.new("5:00 - 5:45 PM", ["Maintain Less, Mentor More: Community Building Techniques from Open Source\nWesley Beary"]),
-  #        Schedule::TimeSlot.new("5:45 - 6:00 PM", ["Thank you and Information"]),
-  #        Schedule::TimeSlot.new("6:00 - 7:00 PM", ["GitHub Drink Up"])
-  #    ],
-  #    Date.new(2012, 10, 9)  => [
-  #        Schedule::TimeSlot.new("8:00 - 9:00 AM", ["Registration & Breakfast"]),
-  #        Schedule::TimeSlot.new("9:15 - 9:30 AM", ["Welcome & Introduction"]),
-  #        Schedule::TimeSlot.new("9:45 - 10:15 AM", ["Legacy\nChad Fowler", "Shifting paradigms - More than syntax\nPatrick Huesler"]),
-  #        Schedule::TimeSlot.new("10:30 - 11:15 AM", ["CoffeeScript for the Rubyist\nMark Bates","Hacking with Gems\nBen Smith"]),
-  #        Schedule::TimeSlot.new("11:30 - 12:15 PM", ["Ten Things You Didn't Know Ruby Could Do\nJames Edward Gray", "Building iOS Apps With RubyMotion\nRay Hightower"]),
-  #        Schedule::TimeSlot.new("12:30 - 1:45 PM", ["Lunch"]),
-  #        Schedule::TimeSlot.new("2:00 - 2:45 PM", ["Building a Ruby Library, the Parts No One Talks About\nMitchell Hashimoto", "Git: The NoSQL Database\nBrandon Keepers"]),
-  #        Schedule::TimeSlot.new("3:00 - 3:45 PM", ["The Designers are Coming!\nGlenn Gillen", "Facing the Monolith: Overcoming Monolithic Applications with SOA\nCharles Max Wood"]),
-  #        Schedule::TimeSlot.new("4:00 - 4:45 PM", ["Running Heroku on Heroku\nNoah Zoschke", "Consultants & Rockstars, Who needs 'em?\nLori Olson"]),
-  #        Schedule::TimeSlot.new("5:00 - 5:45 PM", ["mmm..mruby, or why yet another Ruby implementation.\nMatt Aimonetti"]),
-  #        Schedule::TimeSlot.new("6:00 - 7:00 PM", ["Mahalo"])
-  #    ]
+      Date.new(2013, 4, 3) => {
+          columns: 2,
+          events: [
+              Schedule::TimeSlot.new("7:00-9:00", "Registration and Socializing")
+          ]
+      },
+      Date.new(2013, 4, 4) => {
+          columns: 3,
+          events: [
+              Schedule::TimeSlot.new("8:00-9:00", "Breakfast and Registration"),
+              Schedule::TimeSlot.new("9:00-9:45", "Insight, Intuition and Programming", "Russ Olsen"),
+              Schedule::TimeSlot.new("9:45-10:00", "Lightning Talks", "TBA"),
+              Schedule::TimeSlot.new("10:00-10:45", "Test Driven Development: A Love Story", "Nell Shamrell"),
+              Schedule::TimeSlot.new("10:45-11:00", "Lightning Talks", "TBA"),
+              Schedule::TimeSlot.new("11:00-11:30", "Break"),
+              Schedule::TimeSlot.new("11:30-12:15", "Impressive Ruby Productivity with Vim and Tmux", "Chris Hunt"),
+              Schedule::TimeSlot.new("12:15-1:30", "Lunch"),
+              Schedule::TimeSlot.new("1:30-2:15", "Better Testing with Given/When/Then", "Jim Weirich"),
+              Schedule::TimeSlot.new("2:15-2:30", "Lightning Talks", "TBA"),
+              Schedule::TimeSlot.new("2:30-3:15", "Distributed Patterns in Ruby", "Eric Redmond"),
+              Schedule::TimeSlot.new("3:15-3:30", "Lightning Talks", "TBA"),
+              Schedule::TimeSlot.new("3:30-4:00", "Break"),
+              Schedule::TimeSlot.new("4:00-4:45", "How to Fail at Background Jobs", "Jacob Burkhart"),
+              Schedule::TimeSlot.new("Evening", "> AncientCityRuby::Drinkups.print")
+          ]
+      },
+      Date.new(2013, 4, 5) => {
+          columns: 3,
+          events: [
+              Schedule::TimeSlot.new("8:00-9:00", "Breakfast and Registration"),
+              Schedule::TimeSlot.new("9:00-9:45", "This is Your Brain on Software", "Paolo Perrotta"),
+              Schedule::TimeSlot.new("9:45-10:00", "Lightning Talks", "TBA"),
+              Schedule::TimeSlot.new("10:00-10:45", "Advanced Ruby: Deconstructing a Mock Object Library", "Andy Lindeman"),
+              Schedule::TimeSlot.new("10:45-11:00", "Lightning Talks", "TBA"),
+              Schedule::TimeSlot.new("11:00-11:30", "Break"),
+              Schedule::TimeSlot.new("11:30-12:15", "Live Coding with Ben", "Ben Orenstein"),
+              Schedule::TimeSlot.new("12:15-1:30", "Lunch"),
+              Schedule::TimeSlot.new("1:30-2:15", "Magic Tricks of Testing", "Sandi Metz"),
+              Schedule::TimeSlot.new("2:15-2:30", "Lightning Talks", "TBA"),
+              Schedule::TimeSlot.new("2:30-3:15", "Pairing is Caring", "Avdi Grimm"),
+              Schedule::TimeSlot.new("3:15-3:30", "Lightning Talks", "TBA"),
+              Schedule::TimeSlot.new("3:30-4:00", "Break"),
+              Schedule::TimeSlot.new("4:00-4:45", "Hacking with Gems", "Benjamin Smith"),
+          ]
+      }
   }
-  #
+
   def self.print_schedule
     printer = Schedule::Printer.new
     printer.print_schedule(SCHEDULE_DATA)
