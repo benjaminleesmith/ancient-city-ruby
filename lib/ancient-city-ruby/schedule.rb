@@ -50,7 +50,7 @@ module AncientCityRuby
 
     def self.print
       printer = AncientCityRuby::EventsTable::Printer.new
-      printer.print_schedule(SCHEDULE_DATA)
+      printer.print_table(SCHEDULE_DATA)
       true
     end
   end

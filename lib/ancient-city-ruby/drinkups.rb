@@ -1,6 +1,6 @@
 module AncientCityRuby
   class Drinkups
-    DRINKUP_DATA = {
+    DRINKUPS_DATA = {
         Date.new(2013, 4, 4) => {
             columns: 3,
             events: [
@@ -12,7 +12,7 @@ module AncientCityRuby
 
     def self.print
       printer = AncientCityRuby::EventsTable::Printer.new
-      printer.print_schedule(DRINKUP_DATA)
+      printer.print_table(DRINKUPS_DATA)
       true
     end
   end

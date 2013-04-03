@@ -1,7 +1,7 @@
 module AncientCityRuby
   module EventsTable
     class Printer
-      def print_schedule(data)
+      def print_table(data)
         data.keys.each do |date|
           print_date(date)
           print_schedule_table(data[date])

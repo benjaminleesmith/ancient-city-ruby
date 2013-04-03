@@ -4,7 +4,7 @@ Gem::Specification.new do |gem|
   gem.authors       = ["Benjamin Smith"]
   gem.email         = ["benjamin.lee.smith@gmail.com"]
   gem.description   = "Ancient City Ruby Conf gem!"
-  gem.summary       = "Ancient City Ruby Conf gem! Get the schedule, find the drinkups, enter to win one of 5 Pivotal Tracker $50 gift cards!"
+  gem.summary       = "Ancient City Ruby Conf gem! Get the events_table, find the drinkups, enter to win one of 5 Pivotal Tracker $50 gift cards!"
   gem.homepage      = "http://www.ancientcityruby.com/"
 
   gem.files         = `git ls-files`.split($\)
