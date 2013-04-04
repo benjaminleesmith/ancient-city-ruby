@@ -4,11 +4,11 @@
 
 Run:
 
-    $ gem install aloha-ruby-conf
+    $ gem install ancient-city-ruby
 
 or add this line to your application's Gemfile:
 
-    gem 'aloha-ruby-conf'
+    gem 'ancient-city-ruby'
 
 and then execute:
 
