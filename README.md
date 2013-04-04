@@ -1,29 +1,46 @@
-# Ancient::City::Ruby
-
-TODO: Write a gem description
+# Unofficial 2013 Ancient City Ruby Conf Gem!
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Run:
 
-    gem 'ancient-city-ruby'
+    $ gem install aloha-ruby-conf
 
-And then execute:
+or add this line to your application's Gemfile:
+
+    gem 'aloha-ruby-conf'
+
+and then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install ancient-city-ruby
-
 ## Usage
 
-TODO: Write usage instructions here
+    > require 'ancient-city-ruby'
 
-## Contributing
+    > AncientCityRuby::Schedule.print
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Added some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+    Thursday, April 4, 2013
+    +-------------+------------------------------------------------+-----------------+
+    |  8:00-9:00  |                    Breakfast and Registration                    |
+    +-------------+------------------------------------------------+-----------------+
+    |  9:00-9:45  |       Insight, Intuition and Programming       |   Russ Olsen    |
+    +-------------+------------------------------------------------+-----------------+
+    | 9:45-10:00  |                Lightning Talks                 |       TBA       |
+    +-------------+------------------------------------------------+-----------------+
+    ...
+
+    > AncientCityRuby::Drinkups.print
+
+    Thursday, April 4, 2013
+    +----------+---------------------------------------------+---------------------+
+    | OPTION 1 | Satellite Black Raven Pirate Ship Adventure |        Full         |
+    +----------+---------------------------------------------+---------------------+
+    | OPTION 2 |  Onlife Health Creepy Pub Crawl (ages 21+)  | tinyurl.com/brafw8g |
+    +----------+---------------------------------------------+---------------------+
+
+    > AncientCityRuby::DrawingEntry.create!("foo1@example.com")
+
+    => "You have a 100% chance to win a $50 Pivotal Tracker gift card!"
+
+    ![gift card picture](http://pivotal-tracker-drawing.herokuapp.com/assets/tracker-gift-card.jpg)
