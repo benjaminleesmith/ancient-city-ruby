@@ -43,4 +43,4 @@ and then execute:
 
     => "You have a 100% chance to win a $50 Pivotal Tracker gift card!"
 
-    ![gift card picture](http://pivotal-tracker-drawing.herokuapp.com/assets/tracker-gift-card.jpg)
+![gift card picture](http://pivotal-tracker-drawing.herokuapp.com/assets/tracker-gift-card.jpg)
