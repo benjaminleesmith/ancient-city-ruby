@@ -2,6 +2,8 @@ module AncientCityRuby
 end
 
 require "date"
+require "json"
+require "net/http"
 require "ancient-city-ruby/events_table/time_slot"
 require "terminal-table"
 require "ancient-city-ruby/events_table/printer"

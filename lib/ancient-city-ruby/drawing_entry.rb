@@ -1,7 +1,11 @@
 module AncientCityRuby
   class DrawingEntry
+    ENTRY_URL = "http://pivotal-tracker-drawing.herokuapp.com/entries"
+
     def self.create!(email)
-      "You have a 100% chance to win a $50 Pivotal Tracker gift card!"
+      uri = URI(ENTRY_URL)
+      res = Net::HTTP.post_form(uri, "entry[email]" => email)
+      JSON.parse(res.body)["message"]
     end
   end
 end

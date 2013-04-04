@@ -14,4 +14,5 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = "0.0.1"
   gem.add_runtime_dependency "terminal-table"
+  gem.add_runtime_dependency "json"
 end
